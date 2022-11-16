@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container{
+  flex:100%;  /* this will take all the empty space vertically (left after adding header component)*/
+  display: flex;  /* for sidebar and page container*/
+  flex-wrap: nowrap;
+}
+
+.pageContainer{
+  width: 100%; /* this will take all the empty space horizontally (left after adding sidebar component)*/
+}
+
+
+@media (max-width : 480px){
+  .container{
+    flex-direction: column;
+  }
+  .pageContainer{
+    height: 100%;
+  }
+}

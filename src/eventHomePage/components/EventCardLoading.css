@@ -1,0 +1,54 @@
+
+
+.event__card__loading{
+    background-color: pink;
+    aspect-ratio: 1 / 1.5;
+    border-radius: 15px;
+    padding: 0.7rem;
+    border: 0.5px solid darkgrey;
+    box-shadow: 0 0 1rem rgb(225, 225, 225);
+    max-width: 22rem;
+    /* grid layout */
+
+    display: grid;
+    /* every single quotation represents a row
+    and every item within the single quotation seperated
+    by whitespace are columns
+    */
+    grid-template-areas:
+    'image image'
+    'event_name event_name'
+    'event_countdown event_countdown'
+    'event_date event_time'
+    'event_tags event_tags'
+    '... event_register'
+    ;
+    gap: 1.1rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.event__card__skeleton:nth-child(1){
+    grid-area: image;
+}
+
+.event__card__skeleton:nth-child(2){
+    grid-area: event_name;
+}
+.event__card__skeleton:nth-child(3){
+    grid-area: event_countdown;
+}
+.event__card__skeleton:nth-child(4){
+    grid-area: event_date;
+}
+.event__card__skeleton:nth-child(5){
+    grid-area: event_time;
+}
+.event__card__skeleton:nth-child(6){
+    grid-area: event_tags;
+}
+.event__card__skeleton:nth-child(7){
+    grid-area: event_resgister;
+}

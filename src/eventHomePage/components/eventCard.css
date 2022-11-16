@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+}
+
+.event__card{
+    background-color: inherit;
+    aspect-ratio: 1 / 1.5;
+    border-radius: 15px;
+    padding: 0.7rem;
+    border: 0.5px solid darkgrey;
+    box-shadow: 0 0 1rem rgb(225, 225, 225);
+    max-width: 22rem;
+    /* grid layout */
+
+    display: grid;
+    /* every single quotation represents a row
+    and every item within the single quotation seperated
+    by whitespace are columns
+    */
+    grid-template-areas:
+    'image image'
+    'event_name event_name'
+    'event_countdown event_countdown'
+    'event_date event_time'
+    'event_tags event_tags'
+    '... event_register'
+    ;
+    gap: 1.1rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.event__card:hover{
+    transition-duration: 0.5s;
+    transform: scale(1.01);
+    box-shadow: 0 0 1rem darkgrey;
+}
+
+.event__card__image{
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    aspect-ratio: 1.5 / 1;
+    object-fit: cover;
+    border-radius: inherit;
+
+    grid-area: image;
+}
+
+.event__card__title{
+    grid-area: event_name;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.event__card__countdown{
+    text-align: end;
+    grid-area: event_countdown;
+    padding-right: 1rem;
+}
+
+.event__card__date{
+    text-align: center;
+    grid-area: event_date;
+    background-color: rgb(234, 165, 165);
+    border-radius: 0.7rem;
+    padding: 0.4rem;
+}
+.event__card__date > *{
+    color: rgb(125, 49, 49);
+    font-weight: bold;
+    line-height: 1.1rem;
+}
+
+.event__card__time{
+    text-align: center;
+    grid-area: event_time;
+    background-color:rgba(183, 139, 224,0.6);
+    border-radius: 0.7rem;
+    padding: 0.4rem;
+}
+.event__card__time > *{
+    color : rgb(100, 43, 154);
+    font-weight: bold;
+    line-height: 1.1rem;
+}
+.event__card__tags{
+    grid-area: event_tags;
+}
+
+.event__card__tags > *{
+    background-color: rgb(255, 208, 120);
+    margin: 0.2rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    color: rgb(109, 57, 15);
+    font-weight: bold;
+}
+
+.event__card__register_btn{
+    /* layout */
+    grid-area: event_register;
+
+    background-color: rgb(103, 179, 255);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: rgb(0, 56, 154);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+
+}
+.event__card__register_btn:hover{
+    background-color: rgb(49, 152, 255);
+}
+
+/* @media (max-width : 480px){
+    .event__card__image{
+        max-height: 100%;
+        height: 100%;
+        aspect-ratio: 9 / 16;
+    }
+    .event__card{
+        aspect-ratio: 10 / 1;
+        max-width: 100%;
+        grid-template-areas:
+        'image image event_name event_name'
+        'image image event_countdown event_countdown'
+        'image image event_date event_time'
+        'image image event_tags event_tags'
+        'image image ... event_register'
+        ;
+        row-gap: 1.1rem;
+        column-gap: 0.5rem;
+    }
+}
+
+ */
