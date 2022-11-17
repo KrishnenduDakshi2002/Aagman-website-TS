@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import dayjs from "dayjs";
 import { Agenda } from "../components/Agenda/agenda";
 import { Calendar } from "../components/calendar/calendar.component";
 import { HeaderComponent } from "../components/header/header.component";
@@ -69,6 +70,7 @@ const CollapsableFilter: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
 
 const EventPage = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [selectedDate, setSelectedDate] = useState(dayjs().format());
 
   return (
     <div className="eventPage-body">
@@ -102,8 +104,8 @@ const EventPage = () => {
       </div>
       <div className="eventPage__calendar_wrapper">
         <div className="eventPage__calendar_agenda__container">
-          <Calendar />
-          <Agenda />
+          <Calendar setDate={(val : string)=> setSelectedDate(val)}/>
+          <Agenda currentDate = {selectedDate}/>
         </div>
       </div>
     </div>

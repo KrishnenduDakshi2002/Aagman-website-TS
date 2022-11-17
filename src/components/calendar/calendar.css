@@ -23,6 +23,11 @@
     /* background-color: red; */
 }
 
+.calendar-current-date{
+    color: rgb(0, 93, 186);
+    font-weight: bold;
+}
+
 .calendar-wrapper header p{
     font-size: 1.3rem;
     font-weight: bold;
@@ -51,6 +56,7 @@
     width: calc(100% / 7);
     font-weight: 600;
     /* background-color: dodgerblue; */
+    /* color: rgb(52, 190, 176); */
     margin: 0.5rem 0.2rem 0.5rem 0.2rem;
     border-radius: 4px;
 }
@@ -86,15 +92,17 @@
     background-color: #f2f2f2;
 }
 
-.calendar-days li.calendar-days-active::before{
+/* .calendar-days li.calendar-days-active::before{
     background-color: dodgerblue;
-}
+} */
 
 .calendar-days-inactive{
     color: #aaa;
 }
 .calendar-days-active{
-    color: #fff;
+    color: dodgerblue;
+    font-weight: bold;
+    font-size : 1.2rem;
 }
 
 @media (max-width : 980px){

@@ -18,20 +18,44 @@ const MONTHS = [
   "December",
 ];
 
-export const Calendar = () => {
+const EVENTS = [
+  {
+    eventName : "Devfest'22",
+    startDate : '2022-11-23',
+    endDate : '2022-11-26'
+  },
+  {
+    eventName : "HackOctober'22",
+    startDate : '2022-11-03',
+    endDate : '2022-11-08'
+  },
+  {
+    eventName : "Hackfest",
+    startDate : '2022-11-13',
+    endDate : '2022-11-17'
+  },
+];
+
+interface Props{
+  setDate : (val : string) => void;
+}
+
+export const Calendar:React.FC<Props> = ({setDate}) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const HandleChangeDate = (value : Date)=> setCurrentDate(value)
-  return <RenderCalendar value={currentDate} onChange={HandleChangeDate}/>;
+  const HandleChangeDate = (value: Date) => setCurrentDate(value);
+  return <RenderCalendar value={currentDate} onChange={HandleChangeDate} setDate={setDate}/>;
 };
 
 interface RenderCalendarProps {
   value?: Date;
   onChange: (value: Date) => void;
+  setDate : (val : string) => void;
 }
 
 const RenderCalendar: React.FC<RenderCalendarProps> = ({
   value = new Date(),
   onChange,
+  setDate,
 }) => {
   const currentMonthRef = useRef<HTMLParagraphElement>(null);
 
@@ -48,11 +72,11 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
   let PrefixDates: Array<number> = [];
   let PostfixDates: Array<number> = [];
 
-  
   for (let i = 0; i < firstDayOfMonth; i++)
-  PrefixDates.push(lastDateOfLastMonth - firstDayOfMonth + i + 1);
-  
-  for(let i=1;i<= 42 - (PrefixDates.length + lastDateOfMonth);i++) PostfixDates.push(i);
+    PrefixDates.push(lastDateOfLastMonth - firstDayOfMonth + i + 1);
+
+  for (let i = 1; i <= 42 - (PrefixDates.length + lastDateOfMonth); i++)
+    PostfixDates.push(i);
 
   if (currentMonthRef.current != null) {
     currentMonthRef.current.innerText = `${MONTHS[currMonth]} ${currYear}`;
@@ -62,8 +86,9 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
     <div className="calendar-wrapper">
       <header>
         <span className="calendar-change-left-arrow">
-          <button className="calendar-change-btn"
-          onClick={()=> onChange(new Date(currYear,currMonth-1,1))}
+          <button
+            className="calendar-change-btn"
+            onClick={() => onChange(new Date(currYear, currMonth - 1, 1))}
           >
             <AiOutlineArrowLeft size={18} />
           </button>
@@ -72,8 +97,9 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
           November 2022
         </p>
         <span className="calendar-change-right-arrow">
-          <button className="calendar-change-btn"
-          onClick={()=> onChange(new Date(currYear,currMonth+1,1))}
+          <button
+            className="calendar-change-btn"
+            onClick={() => onChange(new Date(currYear, currMonth + 1, 1))}
           >
             <AiOutlineArrowRight size={18} />
           </button>
@@ -86,31 +112,45 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
           ))}
         </ul>
         <ul className="calendar-days">
+          {/* last days of past month */}
           {PrefixDates.map((date, i) => (
             <li key={i} className="calendar-days-inactive">
               {date}
             </li>
           ))}
 
+          {/* days of current month */}
           {Array.from({ length: lastDateOfMonth }).map((_, i) => {
             const date = i + 1;
             const todayDate = new Date(),
-            today = todayDate.getDate(),
-            month = todayDate.getMonth(),
-            year = todayDate.getFullYear()
-            if (date == today && currMonth == month && currYear == year) return <li key={i}  className="calendar-days-active">{date}</li>;
-            else
+              today = todayDate.getDate(),
+              month = todayDate.getMonth(),
+              year = todayDate.getFullYear();
+
+            const monthString = `${currMonth+1}`,
+            paddedMonthString = monthString.padStart(2,'0');
+
+            const dateString = `${currYear}-${paddedMonthString}-${date}`;
+            if (date == today && currMonth == month && currYear == year)
               return (
-                <li key={i}>
+                <li
+                  key={i}
+                  className="calendar-days-active"
+                  onClick={() => setDate(dateString)}
+                >
                   {date}
                 </li>
               );
+            else return <li key={i}
+            onClick={() => setDate(dateString)}
+            >{date}</li>;
           })}
-
-          {
-            PostfixDates.map((d,i)=><li key={i} className="calendar-days-inactive">{d}</li>)
-          }
-          
+          {/* days of next month */}
+          {PostfixDates.map((d, i) => (
+            <li key={i} className="calendar-days-inactive">
+              {d}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

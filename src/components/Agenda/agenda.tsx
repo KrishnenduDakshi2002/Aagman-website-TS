@@ -1,19 +1,47 @@
 import React from 'react'
-
 import './agenda.css'
 
-export const Agenda = () => {
+const MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  
+
+interface Props{
+    currentDate : string;
+}
+
+export const Agenda:React.FC<Props> = ({currentDate}) => {
   return (
-    <RenderAgenda/>
+    <RenderAgenda currentDate={currentDate}/>
   )
 }
 
+interface RenderAgendaProps {
+    currentDate : string;
+}
 
-const RenderAgenda = () => {
+const RenderAgenda:React.FC<RenderAgendaProps> = ({currentDate}) => {
+    const date = new Date(currentDate),
+    day = date.getDate(),
+    month =date.getMonth(),
+    year = date.getFullYear();
+
+
   return (
     <div className="agenda-wrapper">
         <header>
-            <p>14 November 2022</p>
+            <p>{`${day} ${MONTHS[month]} ${year}`}</p>
         </header>
         <div className="agenda-container">
             <div className="agenda-tiles">
