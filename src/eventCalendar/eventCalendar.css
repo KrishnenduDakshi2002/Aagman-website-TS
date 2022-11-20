@@ -1,0 +1,89 @@
+
+
+.evnentCalendar__wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+}
+
+/* level 1 container */
+
+.eventCalendar__calendar__wrapper{
+    width: 80%;
+    height: 100%;
+    background-color: inherit;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.eventCalendar__side_wrapper{
+    width: 20%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.eventCalendar__calendar__tools{
+    width: 5%;
+    height: 100%;
+    background-color: blue;
+}
+
+/* level 2 container */
+
+/* eventcalendar header */
+.eventCalendar__calendar__header{
+    background-color: #fff;
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.eventCalendar__calender__container{
+    height: 90%;
+    background-color: inherit;
+}
+
+.eventCalendar__calendar__header__navigation{
+    background-color: inherit;
+    height: 100%;
+    padding: 0 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* today button */
+.eventCalendar__calendar__header__navigation > button:nth-child(1){
+    background-color: #fff;
+    padding: 0.5rem 1.5rem;
+    border: 0.5px solid darkgrey;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+}
+
+/* left arrow */
+.eventCalendar__calendar__header__navigation > button:nth-child(2), button:nth-child(3){
+    background-color: transparent;
+    border: none;
+    margin-right: 1rem;
+}
+
+/* month name */
+
+.eventCalendar__calendar__header__navigation > p{
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* search button */
+.eventCalend__calendar__header__search > button:first-child{
+    background-color: transparent;
+    border: none;
+}

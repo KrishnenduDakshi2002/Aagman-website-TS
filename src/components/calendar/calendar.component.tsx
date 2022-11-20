@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import dayjs from "dayjs";
 import "./calendar.css";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
@@ -122,16 +123,13 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
           {/* days of current month */}
           {Array.from({ length: lastDateOfMonth }).map((_, i) => {
             const date = i + 1;
-            const todayDate = new Date(),
-              today = todayDate.getDate(),
-              month = todayDate.getMonth(),
-              year = todayDate.getFullYear();
+            const isToday = dayjs().isSame(`${currYear}-${currMonth+1}-${date}`,'date')
 
             const monthString = `${currMonth+1}`,
             paddedMonthString = monthString.padStart(2,'0');
 
             const dateString = `${currYear}-${paddedMonthString}-${date}`;
-            if (date == today && currMonth == month && currYear == year)
+            if (isToday)
               return (
                 <li
                   key={i}
