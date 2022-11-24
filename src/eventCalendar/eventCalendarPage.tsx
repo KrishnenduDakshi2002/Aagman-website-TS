@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-import {BsArrowLeftCircle,BsArrowRightCircle,BsSearch} from 'react-icons/bs'
+// import {BsArrowLeftCircle,BsArrowRightCircle,BsSearch} from 'react-icons/bs'
+import {AiFillCaretLeft,AiFillCaretRight} from 'react-icons/ai'
 import { Calendar } from '../components/calendar/calendar.component'
 import { SearchBar } from '../components/searchBar/searchBar.component'
 import { LargeCalendar } from './components/LargeCalendar'
@@ -36,8 +37,8 @@ export const EventCalendarPage = () => {
           <div className="eventCalendar__calendar__header">
             <div className="eventCalendar__calendar__header__navigation">
               <button onClick={()=> setSelectedDate(new Date())}>Today</button>
-              <button onClick={()=> setSelectedDate(new Date(selectedDate.getFullYear(),selectedDate.getMonth()-1,1))}><BsArrowLeftCircle size={25}/></button>
-              <button  onClick={()=> setSelectedDate(new Date(selectedDate.getFullYear(),selectedDate.getMonth()+1,1))}><BsArrowRightCircle size={25}/></button>
+              <button onClick={()=> setSelectedDate(new Date(selectedDate.getFullYear(),selectedDate.getMonth()-1,1))}><AiFillCaretLeft size={30}/></button>
+              <button  onClick={()=> setSelectedDate(new Date(selectedDate.getFullYear(),selectedDate.getMonth()+1,1))}><AiFillCaretRight size={30}/></button>
               <p>{`${MONTHS[selectedDate.getMonth()]} ${selectedDate.getFullYear()}`}</p>
             </div>
             <div className="eventCalend__calendar__header__search">

@@ -1,7 +1,8 @@
 import React ,{useId, useState}from "react";
 import "./searchBar.css";
 
-import { BsSearch } from "react-icons/Bs";
+// import { BsSearch } from "react-icons/Bs";
+import {BiSearch} from 'react-icons/bi'
 import { useHeaderSearchButtonContext, useHeaderSearchContext } from "../../contexts/headerSearch.context";
 
 interface SearchBarProps {
@@ -32,7 +33,7 @@ const searchButtonContext = useHeaderSearchButtonContext();
             
         }}
         >
-          <BsSearch size={20} />
+          <BiSearch size={25} />
         </button>
       </div>
     </div>
