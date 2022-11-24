@@ -1,0 +1,39 @@
+
+
+.discussion__sideNav{
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    /* background-color: burlywood; */
+}
+
+.discussion__sideBar__btn{
+    background-color: rgb(254, 197, 201);
+    border-radius: 1rem;
+
+    color: darkslateblue;
+
+    box-shadow: 0 0.1rem 5px darkgrey;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0.8rem 1rem;
+
+    margin-bottom: 1.5rem;
+
+}
+
+.discussion__sideBar__btn:hover{
+    transform: scale(1.01);
+}
+
+.discussion__sideBar__btn > p{
+    color: darkslateblue;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    width: 100%;
+
+    padding: 0 1rem;
+}

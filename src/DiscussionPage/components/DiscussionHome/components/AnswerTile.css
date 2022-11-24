@@ -1,0 +1,16 @@
+
+
+.answerTile__container{
+    background-color: rgb(203, 250, 255);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.answerTile__container > p:nth-child(1){
+    line-height: 1.275rem;
+}
+.answerTile__container > p:nth-child(2){
+    margin-top: 1.5rem;
+    text-align: end;
+}
