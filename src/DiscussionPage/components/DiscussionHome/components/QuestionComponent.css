@@ -1,0 +1,84 @@
+.questionComponent__parent__wrapper {
+  height: 100%;
+  position: relative;
+}
+.questionComponent__parent__container {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  overflow: auto;
+  padding: 5rem 1rem 0 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #fff;
+}
+/* 
+.questionComponent__parent__container > div:nth-child(2){
+    background-color:red;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.questionComponent__container {
+  /* background-color: pink; */
+
+  display: grid;
+  grid-template-areas:
+    "question question question"
+    ". postdate author"
+    "description description description"
+    "tags tags tags";
+  /* sizing the column and row width after applying grid area */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 0.6fr auto;
+}
+
+.questionComponent__container > div:nth-child(1) {
+  grid-area: question;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(4, 4, 139);
+  align-self: center;
+  padding-bottom: 1rem;
+}
+.questionComponent__container > div:nth-child(2) {
+  /* background-color: pink; */
+  grid-area: description;
+  line-height: 1.1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+.questionComponent__container > div:nth-child(3) {
+  /* background-color: yellowgreen; */
+  grid-area: postdate;
+  align-self: center;
+  justify-self: end;
+}
+.questionComponent__container > div:nth-child(3) > span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(0, 0, 106);
+}
+.questionComponent__container > div:nth-child(4) {
+  /* background-color: pink; */
+  grid-area: author;
+  align-self: center;
+  justify-self: center;
+}
+.questionComponent__container > div:nth-child(5) {
+  grid-area: tags;
+  margin: 1rem 0;
+}
+.questionComponent__container > div:nth-child(5) > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Answer section */
+.questionComponent__answers__wrapper > div:nth-child(1){
+    padding: 1rem 0.5rem ;
+    border-bottom: 0.1rem solid darkgrey;
+}
