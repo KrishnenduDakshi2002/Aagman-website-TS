@@ -1,0 +1,85 @@
+
+.loginPage__container{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+
+    display: flex;
+}
+.loginPage__image{
+    flex: 2.5;
+    height: 100%;
+}
+
+.loginPage__image > img{
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.loginPage__login_wrapper{
+    flex:1;
+    height: 100%;
+    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.loginPage__form{
+    height: 50%;
+    background-color: #fff;
+    width: 90%;
+    border-radius: 1rem;
+    padding:1.3rem 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    align-items: center;
+    border: 1px solid darkgrey;
+}
+.loginPage__form > label:first-child{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.loginPage__form > input{
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid darkgrey;
+    padding: 0 0.5rem;
+    height: 100%;
+}
+.loginPage__form > button{
+    height: 100%;
+    border-radius: 1rem;
+    border: none;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.loginPage__form > button:hover{
+    transform: scale(0.99);
+    opacity: 0.9;
+}
+
+#loginPage__login_btn{
+    background-color: rgb(253, 177, 201);
+    color: rgb(148, 0, 25);
+}
+
+#loginPage__gmail_btn{
+    background-color: rgb(126, 189, 252);
+    color:rgb(0, 68, 135);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#loginPage__signin_btn{
+    background-color: rgb(219, 181, 255);
+    color: rgb(114, 0, 114);
+}
