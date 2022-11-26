@@ -25,6 +25,25 @@
     font-size: 1.2rem;
     line-height: 1.5rem;
 }
+
+/* submit button */
+.createDiscussion__wrapper > div:first-child > button{
+    width: 30%;
+    background-color: rgb(106, 180, 255);
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgb(0, 75, 150);
+}
+
+.createDiscussion__wrapper > div:first-child > button:hover{
+    transform: scale(0.99);
+    opacity: 0.9;
+}
+
 /* description input */
 .createDiscussion__wrapper > div:nth-child(2){
     flex: 1;

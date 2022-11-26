@@ -14,6 +14,8 @@ export const HeaderComponent: React.FC = () => {
     setLoginState(!LoginState);
   };
 
+  console.log('Login state -> ',LoginState);  
+
   return (
     <div>
       <nav className="header">

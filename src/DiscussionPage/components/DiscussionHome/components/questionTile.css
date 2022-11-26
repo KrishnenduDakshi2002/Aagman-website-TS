@@ -10,7 +10,7 @@
 .discussionHome__question_tile :hover{
     cursor: pointer;
 }
-
+/* button container */
 .discussionHome__question_tile > div:nth-child(1){
     flex:1;
     display: flex;
@@ -19,6 +19,21 @@
     align-items: center;
     /* background-color: red; */
 }
+/* buttons */
+.discussionHome__question_tile > div:nth-child(1) > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* buttons text */
+.discussionHome__question_tile > div:nth-child(1) > div > p{
+    font-weight: bold;
+    margin-top: 0.5rem;
+    color: rgb(68, 68, 68);
+}
+
 
 .discussionHome__question_body{
     flex:7;

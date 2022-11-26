@@ -55,7 +55,6 @@ for (let i = 1; i <= 42 - (PrefixDates.length + lastDateOfMonth); i++)
                   onDoubleClick={()=> console.log('pressed -> ',dateString)}
                 >
                   {date}
-                  <p>dflakds;fa;sdfasdf;asdfa;lsdf;asdf;a;</p>
                 </div>
               );
               else return <div key={i}
