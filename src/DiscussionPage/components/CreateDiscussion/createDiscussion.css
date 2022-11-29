@@ -1,14 +1,29 @@
 
+.createDiscussion__container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 
 .createDiscussion__wrapper{
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    overflow-y: auto;
 
-    display: flex;
+    display: grid;
+    grid-template-areas:
+    'question tag'
+    'markdown markdown'
+    ;
+    grid-template-rows: 0.5fr 1fr;
 }
 
 .createDiscussion__wrapper > div:nth-child(1){
     flex: 1;
+    grid-area: question;
     /* background-color: yellow; */
     display: flex;
     flex-direction: column;
@@ -26,9 +41,15 @@
     line-height: 1.5rem;
 }
 
+/* all labels */
+.createDiscussion__wrapper  label{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 /* submit button */
-.createDiscussion__wrapper > div:first-child > button{
-    width: 30%;
+.createDiscussion__submit_btn{
+    min-width: 2rem;
     background-color: rgb(106, 180, 255);
     padding: 1rem;
     border: none;
@@ -49,6 +70,7 @@
     flex: 1;
     /* background-color: yellowgreen; */
     padding: 1.5rem;
+    grid-area: tag;
 }
 
 
@@ -66,4 +88,27 @@
 
 .createDiscussion__tag__form > button{
     padding: 0.5rem;
+}
+
+/* markdown */
+
+.markdown__editor__container{
+    grid-area: markdown;
+    padding: 0 2rem;
+}
+
+.markdown__editor{
+    margin-top: 1rem;
+    border: 0.1rem solid darkgrey;
+}
+
+
+@media (max-width: 1080px){
+    .createDiscussion__wrapper{
+        grid-template-areas:
+    'question'
+    'tag'
+    'markdown'
+    ;
+    }
 }

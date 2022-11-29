@@ -1,11 +1,13 @@
 import React from "react";
 import "./questionTile.css";
-import { AiOutlineLike } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import {AiOutlineLike } from "react-icons/ai";
 import { BsReverseLayoutSidebarReverse, BsTags } from "react-icons/bs";
 import { BiCommentDots } from "react-icons/bi";
 import { Tag } from "./Tag";
 
 interface Question {
+  _id: string;
   question : string;
   description : string;
   author : {
@@ -19,21 +21,25 @@ interface Question {
 }
 interface Props{
   data: Question;
+  setId: (val:string)=>void
 }
 
-export const QuestionTile:React.FC<Props> = ({data}) => {
-  const {question,description,author,tags,likes,answers,createdAt,updatedAt} = data;
+export const QuestionTile:React.FC<Props> = ({data,setId}) => {
+  const {_id,question,description,author,tags,likes,answers,createdAt,updatedAt} = data;
 
   return (
     <div className="discussionHome__question_tile">
       <div>
         <div><AiOutlineLike size={25} /><p>{likes}</p></div>
         <div><BiCommentDots size={25} /><p>{answers.length}</p></div>
-        <BsReverseLayoutSidebarReverse size={22} />
+        <div onClick={()=>setId(_id)}> <BsReverseLayoutSidebarReverse size={22} /></div>
+       
       </div>
       <div className="discussionHome__question_body">
         <div>
-          {question}
+          <Link to={'/discussion/question/'.concat(_id)}>
+              {question}
+          </Link>
         </div>
         <div>
           {description}

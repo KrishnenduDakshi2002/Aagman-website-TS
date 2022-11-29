@@ -1,16 +1,36 @@
 
 
 .answerTile__container{
-    background-color: rgb(203, 250, 255);
+    /* background-color: rgb(203, 250, 255); */
     padding: 1rem;
-    margin-top: 0.5rem;
-    border-radius: 0.5rem;
+    margin-top: 0.1rem;
+    /* border-radius: 0.5rem; */
+    border-bottom: 0.5px solid darkgrey;
+
+    display: grid;
+    grid-template-areas:
+    'like answer answer'
+    'like . author'
+    ;
+    grid-template-columns: 0.2fr 1fr 1fr;
+    /* grid-template-rows: auto 0.1fr; */
+
 }
 
-.answerTile__container > p:nth-child(1){
-    line-height: 1.275rem;
+.answerTile__container > div:nth-child(1){
+    grid-area: answer;
 }
-.answerTile__container > p:nth-child(2){
-    margin-top: 1.5rem;
+.answerTile__container > div:last-child{
+    grid-area: like;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answerTile__container > p{
+    grid-area: author;
+    line-height: 1.275rem;
     text-align: end;
 }
+
+
