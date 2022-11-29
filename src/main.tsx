@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
-import App from "./App";
+import {App} from "./App";
 import { Login } from "./Auth/Login/Login";
 import { HeaderComponent } from "./components/header/header.component";
 import { AppContext } from "./contexts";

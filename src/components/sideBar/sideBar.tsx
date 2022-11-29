@@ -19,8 +19,8 @@ export const SideBar = () => {
   return (
     <div className="sideBar">
       <Link
-        to="/events"
-        className={currentRoute === "events" ? activeClassName : inactiveClassName}
+        to="/"
+        className={currentRoute === "" ? activeClassName : inactiveClassName}
       >
         <FaHome size={30} className="sideBar-icons"/>
         <div className="sideBar-link-text">Events</div>
@@ -33,7 +33,7 @@ export const SideBar = () => {
         <div className="sideBar-link-text">Calendar</div>
       </Link>
       <Link
-        to="/discussion"
+        to="/discussion/"
         className={
           currentRoute === "discussion" ? activeClassName : inactiveClassName
         }

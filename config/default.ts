@@ -1,1 +1,2 @@
-export const HOST = "http://127.0.0.1:8000"
+// export const HOST = "https://asia-south1-aagman-api-firebase-a3d16.cloudfunctions.net/aagman"
+export const HOST = "http://127.0.0.1:5001/aagman-api-firebase-a3d16/asia-south1/aagman"
