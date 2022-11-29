@@ -24,14 +24,19 @@ export const ProtectedRoutes: React.FC<{ children: JSX.Element }> = ({
       })
         .then((res) => res.json())
         .then((data) => {
-          setResponse(data);
+        if(data.statusCode === 401 || data.statusCode === 400)
+          {
+            navigate('/login');
+          }
+          else{
+            setResponse(data);
+          }
         });
     }
     else{
         navigate('/login');
     }
   },[token])
-  console.log(response);
   if(response?.statusCode===200){
     return children;
   }

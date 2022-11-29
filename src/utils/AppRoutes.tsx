@@ -6,6 +6,7 @@ import { SignUp } from "../Auth/SignUp/SignIn";
 import { BlogsPage } from "../BlogsPage/blogsPage";
 import { CollaboratePage } from "../CollaboratePage/collaboratePage";
 import { CreateDiscussion } from "../DiscussionPage/components/CreateDiscussion/CreateDiscussion";
+import { QuestionComponent } from "../DiscussionPage/components/DiscussionHome/components/QuestionComponent";
 import { DiscussionHome } from "../DiscussionPage/components/DiscussionHome/DiscussionHome";
 import { MyQuestions } from "../DiscussionPage/components/MyQuestions/MyQuestions";
 import { DiscussionPage } from "../DiscussionPage/discussionPage";
@@ -22,7 +23,7 @@ export const AppRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       {/* ************************************************ Events page routes *************************************************/}
       <Route
-        path="/events"
+        path="/"
         element={
           <App>
             <EventPage />
@@ -71,6 +72,16 @@ export const AppRoutes = () => {
                   <MyQuestions />
                 </DiscussionPage>
               </ProtectedRoutes>
+            </App>
+          }
+        />
+        <Route
+          path="question/:questionId"
+          element={
+            <App>
+                <DiscussionPage>
+                  <QuestionComponent/>
+                </DiscussionPage>
             </App>
           }
         />
