@@ -9,32 +9,33 @@ import "./DiscussionHome.css";
 
 export const DiscussionHome = () => {
   const [Questions, setQuestions] = useState([]);
+  const [questionId, setQuestionId] = useState("");
   useEffect(() => {
     (async () =>
       await GetAllQuestionsFetch().then((data) => setQuestions(data)))(); // calling the function
   }, []);
 
-  console.log('rendering discussion home');
   return (
     <div className="discussion__home__parent__container">
-      <div className="discussion__home__quesions__wrapper">
-        <div className="discussion__home__quesions__header">
-          <SearchBar placeholder="Search Questions" />
-        </div>
-        <div className="discussion__home__quesions__container">
-          {
-          Questions.length > 0 ? 
-          Questions.map((data,index) => {
-            return (
-              <QuestionTile key={index}
-              data = {data}
-              />
-            )
-          }) : <></>}
-        </div>
+      <div>
+        <SearchBar placeholder="Search Questions" />
       </div>
-      <div className="discussion__home__side__container">
-        <QuestionComponent />
+      <div>
+        <div className="discussion__home__quesions__wrapper">
+          <div className="discussion__home__quesions__container">
+            {Questions.length > 0 ? (
+              Questions.map((data, index) => {
+                return <QuestionTile key={index} data={data} setId={(val:string)=> setQuestionId(val)}/>;
+              })
+            ) : (
+              // loading component
+              <></>
+            )}
+          </div>
+        </div>
+        <div className="discussion__home__side__container">
+          <QuestionComponent id={questionId}/>
+        </div>
       </div>
     </div>
   );

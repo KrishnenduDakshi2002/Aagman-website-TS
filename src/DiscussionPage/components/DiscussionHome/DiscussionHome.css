@@ -3,12 +3,35 @@
     --discussion_home_questions_background : rgb(234, 234, 234);
 }
 
+/* outer most container */
+
 .discussion__home__parent__container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* first child --> search bar container */
+.discussion__home__parent__container > div:nth-child(1){
+    width: 100%;
+    padding: 0.7rem 0rem 1.5rem 1rem;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid darkgrey;
+}
+
+
+/* second child --> all contents (questions and answers) container */
+.discussion__home__parent__container > div:nth-child(2){
     width: 100%;
     height: 100%;
     display: flex;
 }
 
+
+/* wrapper for questions container */
 .discussion__home__quesions__wrapper{
     flex:1;
     background-color: inherit;
@@ -23,19 +46,20 @@
     /* background-color: red; */
 }
 
-.discussion__home__quesions__header{
-    padding: 1rem 0.5rem;
-    background-color: inherit;
-    position: absolute;
-    top: 0;
-
-}
 .discussion__home__quesions__container{
     width: 100%;
-    height: 90%;
+    height: 100%;
     padding: 0 0.1rem;
     position: absolute;
+    top: 0;
     overflow: auto;
-    bottom: 0;
     background-color:var(--discussion_home_questions_background);
+}
+
+
+@media (max-width: 1024px){
+    .discussion__home__side__container{
+        display: none;
+    }
+
 }
