@@ -6,7 +6,7 @@ import { BsReverseLayoutSidebarReverse, BsTags } from "react-icons/bs";
 import { BiCommentDots } from "react-icons/bi";
 import { Tag } from "./Tag";
 
-interface Question {
+export interface Question {
   _id: string;
   question : string;
   description : string;
@@ -23,12 +23,13 @@ interface Props{
   data: Question;
   setId: (val:string)=>void
 }
-
-export const QuestionTile:React.FC<Props> = ({data,setId}) => {
+//https://reactjs.org/docs/forwarding-refs.html
+//https://stackoverflow.com/questions/60052450/in-react-using-typescript-how-do-i-pass-a-ref-to-a-custom-component-using-reff
+export const QuestionTile = React.forwardRef<any, Props>(({data,setId},ref) => {
   const {_id,question,description,author,tags,likes,answers,createdAt,updatedAt} = data;
 
   return (
-    <div className="discussionHome__question_tile">
+    <div ref={ref} className="discussionHome__question_tile">
       <div>
         <div><AiOutlineLike size={25} /><p>{likes}</p></div>
         <div><BiCommentDots size={25} /><p>{answers.length}</p></div>
@@ -56,4 +57,4 @@ export const QuestionTile:React.FC<Props> = ({data,setId}) => {
       </div>
     </div>
   );
-};
+});

@@ -42,7 +42,7 @@ export const EventCalendarPage = () => {
               <p>{`${MONTHS[selectedDate.getMonth()]} ${selectedDate.getFullYear()}`}</p>
             </div>
             <div className="eventCalend__calendar__header__search">
-              <SearchBar placeholder='Search events'/>
+              <SearchBar placeholder='Search events' onChange={()=>{}}/>
             </div>
           </div>
         {/* main event calendar */}

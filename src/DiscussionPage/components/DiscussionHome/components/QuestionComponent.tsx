@@ -42,13 +42,13 @@ export const QuestionComponent: React.FC<{ id?: string }> = ({ id }) => {
   useEffect(() => {
     if (questionId) {
       (async () => getQuestionFetch(questionId).then((res) => setData(res)))();
-      console.log("rendering using questionId");
+      console.log("rendering questionComponent using questionId");
     } else if (id) {
       (async () =>
         getQuestionFetch(id).then((res) => {
           setData(res);
         }))();
-      console.log("rendering using id");
+      console.log("rendering questionComponent using id");
     }
   }, [id]);
 
@@ -102,7 +102,7 @@ export const QuestionComponent: React.FC<{ id?: string }> = ({ id }) => {
         <div className="questionComponent__answers__wrapper">
           <div>{data?.answers.length} Answers</div>
           {data?.answers ?? length > 0 ? (
-            data?.answers.map((answer, index) => <AnswerTile data={answer} />)
+            data?.answers.map((answer, index) => <AnswerTile key={index} data={answer} />)
           ) : (
             <></>
           )}

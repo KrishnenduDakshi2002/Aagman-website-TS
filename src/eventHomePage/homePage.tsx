@@ -84,7 +84,7 @@ const EventPage = () => {
               <BiSlider size={25} />
             </button>
             <div className="eventPage-searchBar">
-              <SearchBar placeholder="Search events" />
+              <SearchBar placeholder="Search events" onChange={()=>{}}/>
             </div>
           </div>
         </div>
