@@ -1,0 +1,149 @@
+
+
+.clock__wrapper{
+    width: 18rem;
+    height: 25rem;
+    /* aspect-ratio:  1/1.5; */
+    background-color: white;
+    border: 1px solid darkgrey;
+    border-radius: 0.7rem;
+
+    display: grid;
+    grid-template-areas:
+    'display display display'
+    'dialer dialer dialer'
+    '. cancel ok'
+    ;
+    grid-template-rows: 1fr 3fr 0.7fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.clock__display{
+    grid-area: display;
+    display: flex;
+
+}
+
+.clock__display input{
+    /* background-color: red; */
+    width: 3.5rem;
+    cursor: pointer;
+    padding: 1.1rem 0.8rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    /* border: 1px solid darkgrey; */
+    border: none;
+    /* background: none; */
+    background-color:rgb(157, 204, 252);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.clock__display p{
+    font-size:2.5rem;
+    align-self: center;
+}
+
+.clock__dialer{
+    grid-area: dialer;
+    width: 15rem;
+    height: 15rem;
+    background-color: lightgrey;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this is the hour dialer */
+.clock__dialer__hour, .clock__dialer__minute{
+    position: relative;
+    background-color: white;
+    width: 98%;
+    height: 98%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this is the center dot */
+.clock__dialer__hour::before , .clock__dialer__minute::before{
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: dodgerblue;
+    border-radius: 50%;
+}
+
+.clock__needle{
+    position: absolute;
+    /* border: 1px solid black; */
+    transform: translate(50%);
+    display: flex;
+    align-items: center;
+}
+.clock__dialer__needle{
+    position: absolute;
+    width: 5rem;
+    height: 0.2rem;
+    background-color: dodgerblue;
+}
+.clock__dialer__needle__circle{
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color:dodgerblue;
+    /* transform: translate(180%); */
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* this is the text for clock */
+.clock__dialer__hour span, .clock__dialer__minute span{
+
+    position: absolute;
+    text-align: end;
+    width: 7.5rem;
+    padding-right: 0.5rem;
+    /* background-color: red;
+    border: 1px solid white; */
+    /* setting pivot for rotating */
+    transform-origin: left center;
+    /* transform: translate(50%) rotate(-30deg); */
+}
+
+
+.clock__dialer__hour span button, .clock__dialer__minute span button{
+    
+    cursor: pointer;
+    background:none;
+    /* background-color: lightgray; */
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.clock__cancel__btn{
+    grid-area: cancel;
+}
+
+.clock__submit__btn{
+    grid-area: ok;
+}
+.clock__cancel__btn button, .clock__submit__btn button{
+    padding: 0.5rem 1rem ;
+    background-color:rgb(157, 204, 252);
+    border: none;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
