@@ -20,17 +20,8 @@
    flex-direction: column;
 }
 
-
-.eventPage-filters{
-    grid-area: filters;
- }
-
- 
 .eventPage-events-header-container{
-    grid-area: events_container;
-
     background-color:#fff;
-
     position: relative;
     height: 100%;
 }
@@ -53,30 +44,46 @@
 }
 
 
-.eventPage-header{
+
+
+
+/* header button wrapper */
+.eventPage__events__nav{
     width: 100%;
     display: flex;
     flex-direction: row;
     background-color: inherit;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     align-items: center;
-    padding-left: 2rem;
-    padding-bottom: 1rem;
-    /* border-bottom: 0.5px solid darkgrey; */
-}
-#eventPage-filter-btn{
-    background-color:lightgrey;
-    border: none;
-    border-radius: 10px;
-    padding: 0.3rem 1.5rem;
-    margin-right: 2rem;
 }
 
-#eventPage-filter-btn:hover{
-    background-color: rgb(175, 175, 175);
+/* header button container */
+.eventPage__events__nav div{
+    text-align: center;
 }
-.eventPage-searchBar{
-    align-self: center;
+
+
+/* header  button  */
+.eventPage__header__btn{
+    width: 90%;
+    padding: 0.7rem 0;
+    border-radius: 0.9rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 0.5px solid darkgrey;
+    background: none;
 }
+.eventPage__header__btn__active, .eventPage__header__btn:hover{
+    background-color: rgb(255, 217, 202);
+    border: none;
+    transition-duration: 0.5s;
+}
+
+
+
+
 
 .eventPage-events-container{
 
@@ -90,7 +97,7 @@
 
     /* Grid layout */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
     row-gap: 1rem;
     column-gap: 1.1rem;
     align-items: start;
@@ -101,102 +108,6 @@
 
 
 
-/* Collapsable filter component */
-
-
-.eventpage-filter-collapsable-preRender{
-    display: none;
-}
-
-
-.eventpage-filter-collapsable-inactive{
-    width: 100%;
-    display: flex;
-    padding: 0 3rem;
-    border-bottom: 1px solid darkgrey;
-    /*   
-    
-    animation_name
-    animation_duration
-    animation_type
-    animation_fill_mode
-    repetation number
-    direction of animation
-    animation delay
-    */
-    animation: collapse-out 0.3s linear forwards;
-}
-
-.eventpage-filter-collapsable{
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid darkgrey;
-    padding: 0 3rem;
-    animation: collapse-in 0.3s linear forwards ;
-    /* forwards -> keeps the property from 100% */
-}
-
-
-@keyframes collapse-in{
-    /* starting from height of 0px */
-    0%{
-        height: 0px;
-    }
-    /* end at height of 200px */
-    100%{
-        height: 200px;
-    }
-}
-@keyframes collapse-out{
-    /* starting from this state + properties of (.eventpage-filter-collapsable-inactive) */
-    0%{
-        height: 200px;
-    }
-    /* this is the final statge, all properties is gonna be same of (.eventpage-filter-collapsable-inactive)
-    
-    but as we mentioned (forwards -> this keeps all the properties from 100% state)
-    
-    height : 0px --> will be added to inactive state
-    display : none (display: flex --> will be replaced after animation ends)
-    */
-    100%{
-        height: 0px;
-        display: none;
-    }
-}
-
-
-
-.eventpage-filter-container{
-    flex: 1;
-    /* background-color: rgb(208, 0, 0); */
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    padding-right: 5rem;
-}
-
-.eventpage-filter-container p {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-    border-bottom:1px solid darkgrey ;
-    font-weight: bold;
-}
-
-.eventpage-filter-container ul li button{
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.eventpage-filter-container ul li button:hover{
-    background-color: rgb(214, 214, 214);
-    padding: 0.2rem;
-}
-
 
 
 @media (max-width: 1200px){
@@ -206,21 +117,6 @@
     .eventPage__calendar_wrapper{
         width: 40%;
         /* background-color: green; */
-    }
-    .eventPage-header{
-        padding-left: 1rem;
-    }
-    #eventPage-filter-btn{
-        margin-right: 1rem;
-        padding: 0.1rem 1rem;
-    }
-    .eventpage-filter-container {
-        padding-right: 1rem;
-        margin: 0.5rem;
-    }
-    .eventpage-filter-collapsable{
-        padding: 0 1rem;
-
     }
     
 }
@@ -236,20 +132,12 @@
 }
 
 @media (max-width: 480px){
-    .eventPage-header{
-        padding-top: 1rem;
+    
+    
+    .eventPage__header__btn{
+        font-size: 0.7rem;
     }
-    .eventpage-filter-container p {
-        font-size: 0.8rem;
-    }
-    .eventPage-header{
-        flex-direction: column-reverse;
-        align-items: start;
-    }
-    .eventPage-searchBar{
-        margin-bottom: 0.5rem;
-    }
-
+   
     /* grid layout change */
     .eventPage-events-container{
         grid-template-columns: 1fr;

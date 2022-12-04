@@ -11,6 +11,10 @@ import { DiscussionHome } from "../DiscussionPage/components/DiscussionHome/Disc
 import { MyQuestions } from "../DiscussionPage/components/MyQuestions/MyQuestions";
 import { DiscussionPage } from "../DiscussionPage/discussionPage";
 import { EventCalendarPage } from "../eventCalendar/eventCalendarPage";
+import CreateEvent from "../eventHomePage/components/CreateEvent/CreateEvent";
+import { EventHome } from "../eventHomePage/components/Home/EventHome";
+import HostedEvents from "../eventHomePage/components/HostedEvents/HostedEvents";
+import RegisteredEvents from "../eventHomePage/components/RegisteredEvents/RegisteredEvents";
 import EventPage from "../eventHomePage/homePage";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 
@@ -22,14 +26,54 @@ export const AppRoutes = () => {
       {/* ************************************************ Signup page routes *************************************************/}
       <Route path="/signup" element={<SignUp />} />
       {/* ************************************************ Events page routes *************************************************/}
-      <Route
-        path="/"
-        element={
-          <App>
-            <EventPage />
-          </App>
-        }
-      />
+      <Route path="/">
+        <Route
+          index
+          element={
+            <App>
+              <EventPage>
+                <EventHome/>
+              </EventPage>
+            </App>
+          }
+        />
+        <Route
+          path="/create-event"
+          element={
+            <App>
+              <ProtectedRoutes>
+                <EventPage>
+                  <CreateEvent/>
+                </EventPage>
+              </ProtectedRoutes>
+            </App>
+          }
+        />
+        <Route
+          path="/registered-events"
+          element={
+            <App>
+              <ProtectedRoutes>
+                <EventPage>
+                  <RegisteredEvents/>
+                </EventPage>
+              </ProtectedRoutes>
+            </App>
+          }
+        />
+        <Route
+          path="/hosted-events"
+          element={
+            <App>
+              <ProtectedRoutes>
+                <EventPage>
+                  <HostedEvents/>
+                </EventPage>
+              </ProtectedRoutes>
+            </App>
+          }
+        />
+      </Route>
       {/* ************************************************ Event calendar page routes *************************************************/}
       <Route
         path="/eventCalendar"
@@ -79,9 +123,9 @@ export const AppRoutes = () => {
           path="question/:questionId"
           element={
             <App>
-                <DiscussionPage>
-                  <QuestionComponent/>
-                </DiscussionPage>
+              <DiscussionPage>
+                <QuestionComponent />
+              </DiscussionPage>
             </App>
           }
         />

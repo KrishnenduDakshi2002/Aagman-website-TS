@@ -3,14 +3,30 @@ import "./eventCard.css";
 
 import { TfiTimer } from "react-icons/tfi";
 
-export const EventCardComponent: React.FC = () => {
+
+export interface EventInterface {
+  _id: string;
+  eventName: string;
+  description: string;
+  startTime: string;
+  endTime: string;
+  startDate: string;
+  endDate: string;
+  mode: string;
+  type: string;
+  organizers: Array<string>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const EventCardComponent: React.FC<{event : EventInterface}> = ({event}) => {
   const imageUri =
     "https://developers.google.com/community/images/gdsc-solution-challenge/solutionchallenge-homepage.png";
   return (
     <div className="event__card">
       <img src={imageUri} alt="event image" className="event__card__image" />
 
-      <p className="event__card__title">Google Solution Challenge </p>
+      <p className="event__card__title">{event.eventName}</p>
       <div className="event__card__countdown">
         <span>
           <TfiTimer />
@@ -27,8 +43,8 @@ export const EventCardComponent: React.FC = () => {
       </div>
       <div className="event__card__tags">
         <span className="event__card__status">ongoing</span>
-        <span className="event__card__mode">online</span>
-        <span className="event__card__type">hackathon</span>
+        <span className="event__card__mode">{event.mode}</span>
+        <span className="event__card__type">{event.type}</span>
       </div>
       <a
         href="https://developers.google.com/community/gdsc-solution-challenge"

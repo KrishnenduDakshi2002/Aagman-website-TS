@@ -75,7 +75,10 @@ export const DiscussionHome = () => {
           </div>
         </div>
         <div className="discussion__home__side__container">
-          <QuestionComponent id={questionId} />
+          {
+            questionId ? <QuestionComponent id={questionId} /> : <div>{'click side bar to open'}</div>
+          }
+          
         </div>
       </div>
     </div>

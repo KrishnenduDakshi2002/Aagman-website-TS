@@ -6,10 +6,17 @@ import loginBackgroundImage from "../../assets/login-background.png";
 import "./Login.css";
 import { useLoggedInContext } from "../../contexts/LoginContext";
 export const Login = () => {
-  const {LoginState,setLoginState} = useLoggedInContext();
+  const {LoginState,setLoginState,getGoogleLoginAuth} = useLoggedInContext();
   const EmailRef = useRef<HTMLInputElement>(null);
   const PasswordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const HandleGoogleSignin = async() =>{
+    try {
+      await getGoogleLoginAuth();
+    } catch (error) {
+      console.log('error ->google signin ->',error);
+    }
+  }
 
   const HandleSubmit = () => {
     const email = EmailRef.current?.value;
@@ -38,7 +45,7 @@ export const Login = () => {
           localStorage.setItem("authToken" ,data.authToken);
 
           //changing the login state 
-          setLoginState(!LoginState);
+          setLoginState(true);
           console.log('redirecting to login')
 
           // navigate back to previous page
@@ -77,7 +84,7 @@ export const Login = () => {
           >
             Login
           </button>
-          <button id="loginPage__gmail_btn">
+          <button id="loginPage__gmail_btn" onClick={HandleGoogleSignin}>
             <SiGmail size={25} />
             <span>Sign in using Google</span>
           </button>
