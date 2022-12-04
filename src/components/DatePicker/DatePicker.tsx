@@ -1,71 +1,60 @@
 import React, { useRef, useState, useEffect } from "react";
 import dayjs from "dayjs";
-import "./calendar.css";
+import "./DatePicker.css";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const WEEKS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const EVENTS = [
-  {
-    eventName : "Devfest'22",
-    startDate : '2022-11-23',
-    endDate : '2022-11-26'
-  },
-  {
-    eventName : "HackOctober'22",
-    startDate : '2022-11-03',
-    endDate : '2022-11-08'
-  },
-  {
-    eventName : "Hackfest",
-    startDate : '2022-11-13',
-    endDate : '2022-11-17'
-  },
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 interface Props{
-  setDate : (val : string) => void;
+  value : Date;
+  onChange : (val : Date) => void;
 }
 
-export const Calendar:React.FC<Props> = React.memo(({setDate}) => {
-  console.log('rendering calendar')
-  const [currentDate, setCurrentDate] = useState(new Date());
+export const DatePicker:React.FC<Props> = React.memo(({value,onChange}) => {
+  const [currentDate, setCurrentDate] = useState(value);
   const HandleChangeDate = (value: Date) => setCurrentDate(value);
-  return <RenderCalendar value={currentDate} onChange={HandleChangeDate} setDate={setDate}/>;
+  return <RenderCalendar value={currentDate} onChange={HandleChangeDate} setDate={onChange}/>;
 });
 
 interface RenderCalendarProps {
-  value?: Date;
+  value: Date;
   onChange: (value: Date) => void;
-  setDate : (val : string) => void;
+  setDate : (val : Date) => void;
 }
 
 const RenderCalendar: React.FC<RenderCalendarProps> = ({
-  value = new Date(),
+  value,
   onChange,
   setDate,
 }) => {
+  const [onClickDate, setOnClickDate] = useState<number>();
+  const [onClickStyle, setOnClickStyle] = useState("");
   const currentMonthRef = useRef<HTMLParagraphElement>(null);
 
+  const HandleOnClick = (date:number,dateString : string) =>{
+    setOnClickDate(date);
+    setOnClickStyle("datePicker-days-active");
+    setDate(new Date(dateString));
+  }
+
   //getting new date
-  let date = new Date(value),
-    currYear = date.getFullYear(),
-    currMonth = date.getMonth(),
-    currDate = date.getDate();
+    let currYear = value.getFullYear(),
+    currMonth = value.getMonth(),
+    currDate = value.getDate();
 
   let firstDayOfMonth = new Date(currYear, currMonth, 1).getDay(); // first date of current month
   let lastDateOfMonth = new Date(currYear, currMonth + 1, 0).getDate(); // last date of current month
@@ -85,38 +74,40 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
   }
 
   return (
-    <div className="calendar-wrapper">
+    <div className="datePicker-wrapper">
       <header>
-        <span className="calendar-change-left-arrow">
+        <div className="datePicker-change-left-arrow">
           <button
-            className="calendar-change-btn"
+            className="datePicker-change-btn"
             onClick={() => onChange(new Date(currYear, currMonth - 1, 1))}
           >
-            <AiOutlineArrowLeft size={18} />
+            <AiOutlineArrowLeft size={25} color="white"/>
           </button>
-        </span>
-        <p ref={currentMonthRef} className="calendar-current-date">
-          {`${MONTHS[currMonth]} ${currYear}`}
-        </p>
-        <span className="calendar-change-right-arrow">
+        </div>
+        <div className="datePicker-change-right-arrow">
           <button
-            className="calendar-change-btn"
+            className="datePicker-change-btn"
             onClick={() => onChange(new Date(currYear, currMonth + 1, 1))}
           >
-            <AiOutlineArrowRight size={18} />
+            <AiOutlineArrowRight size={25} color="white"/>
           </button>
-        </span>
+        </div>
+        <div className="datePicker-current-date">
+          <p ref={currentMonthRef} >
+            {`${MONTHS[currMonth]} ${currYear}`}
+          </p>
+        </div>
       </header>
-      <div className="calendar-body">
-        <ul className="calendar-weeks">
+      <div className="datePicker-body">
+        <ul className="datePicker-weeks">
           {WEEKS.map((day, index) => (
             <li key={index}>{day}</li>
           ))}
         </ul>
-        <ul className="calendar-days">
+        <ul className="datePicker-days">
           {/* last days of past month */}
           {PrefixDates.map((date, i) => (
-            <li key={i} className="calendar-days-inactive">
+            <li key={i} className="datePicker-days-inactive">
               {date}
             </li>
           ))}
@@ -124,29 +115,19 @@ const RenderCalendar: React.FC<RenderCalendarProps> = ({
           {/* days of current month */}
           {Array.from({ length: lastDateOfMonth }).map((_, i) => {
             const date = i + 1;
-            const isToday = dayjs().isSame(`${currYear}-${currMonth+1}-${date}`,'date')
 
             const monthString = `${currMonth+1}`,
             paddedMonthString = monthString.padStart(2,'0');
 
             const dateString = `${currYear}-${paddedMonthString}-${date}`;
-            if (isToday)
-              return (
-                <li
-                  key={i}
-                  className="calendar-days-active"
-                  onClick={() => setDate(dateString)}
-                >
-                  {date}
-                </li>
-              );
-            else return <li key={i}
-            onClick={() => setDate(dateString)}
+
+            return <li className={(onClickDate == date ? onClickStyle : "")} key={i}
+            onClick={() => HandleOnClick(date,dateString)}
             >{date}</li>;
           })}
           {/* days of next month */}
           {PostfixDates.map((d, i) => (
-            <li key={i} className="calendar-days-inactive">
+            <li key={i} className="datePicker-days-inactive">
               {d}
             </li>
           ))}

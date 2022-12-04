@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useNavigate, } from "react-router-dom";
 import "./header.css";
 
@@ -9,12 +9,13 @@ import { useLoggedInContext } from "../../contexts/LoginContext";
 export const HeaderComponent: React.FC = () => {
   const {LoginState,setLoginState} = useLoggedInContext();
   const navigate = useNavigate();
+
   const HandleLogout = () => {
     localStorage.removeItem("authToken");
     setLoginState(!LoginState);
   };
 
-  // console.log('Login state -> ',LoginState);  
+
 
   return (
     <div>
