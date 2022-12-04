@@ -1,13 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+require('dotenv/config');
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAOQqRxGHSU2_j9kNZ5KBv8p2a7Myh2e6Q",
+  apiKey: process.env.FIREBASE_APIKEY,
   authDomain: "aagman-api-firebase-a3d16.firebaseapp.com",
   projectId: "aagman-api-firebase-a3d16",
   storageBucket: "aagman-api-firebase-a3d16.appspot.com",
