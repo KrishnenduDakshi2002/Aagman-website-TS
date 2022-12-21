@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./EventHome.css";
 import { BiSlider } from "react-icons/bi";
-import { HOST } from "../../../../config/default";
 import { SearchBar } from "../../../components/searchBar/searchBar.component";
 import { EventCardComponent, EventInterface } from "../eventsCard.component";
+
+import { HOST } from "../../../../AppConfig/host";
 
 export const EventHome = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);

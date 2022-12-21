@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { HOST } from "../../../../config/default";
 import { SearchBar } from "../../../components/searchBar/searchBar.component";
 import { QuestionComponent } from "./components/QuestionComponent";
 import { Question, QuestionTile } from "./components/questionTile";
 import "./DiscussionHome.css";
+import { HOST } from "../../../../AppConfig/host";
+
 
 export const DiscussionHome = () => {
   const [questionId, setQuestionId] = useState("");

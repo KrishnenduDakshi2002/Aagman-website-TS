@@ -1,4 +1,5 @@
-import { HOST } from "../../config/default";
+
+import { HOST } from "../../AppConfig/host";
 
 export const CreateQuestionFetch = async ({
   question,

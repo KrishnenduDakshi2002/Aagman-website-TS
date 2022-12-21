@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "AppConfig/host.ts", "AppConfig/firebase.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

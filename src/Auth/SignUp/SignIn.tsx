@@ -3,10 +3,12 @@ import "./SignIn.css";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import image from "../../assets/login-background.png";
 import axios from "axios";
-import { HOST } from "../../../config/default";
 import { SiJekyll } from "react-icons/si";
 import { async } from "@firebase/util";
 import { useLoggedInContext } from "../../contexts/LoginContext";
+import { HOST } from "../../../AppConfig/host";
+
+
 export const SignUp = () => {
   const {LoginState,setLoginState} = useLoggedInContext();
   const userNameRef = useRef<HTMLInputElement>(null);

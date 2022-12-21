@@ -1,4 +1,5 @@
-import { HOST } from "../../config/default";
+
+import { HOST } from "../../AppConfig/host";
 
 export const CreateAnswerFetch = async(answer:string,questionId:string) => {
   const token = localStorage.getItem("authToken") as string;

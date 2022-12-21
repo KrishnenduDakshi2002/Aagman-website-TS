@@ -1,4 +1,5 @@
-import { HOST } from "../../config/default";
+
+import { HOST } from "../../AppConfig/host";
 
 export const GetAllQuestionsFetch = async()=>{
     return await fetch(`${HOST}/api/v1/discussion/question/getAll`, {

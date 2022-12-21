@@ -1,10 +1,10 @@
 import React, { useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { SiGmail } from "react-icons/si";
-import {HOST} from '../../../config/default';
 import loginBackgroundImage from "../../assets/login-background.png";
 import "./Login.css";
 import { useLoggedInContext } from "../../contexts/LoginContext";
+import { HOST } from "../../../AppConfig/host";
 export const Login = () => {
   const {LoginState,setLoginState,getGoogleLoginAuth} = useLoggedInContext();
   const EmailRef = useRef<HTMLInputElement>(null);

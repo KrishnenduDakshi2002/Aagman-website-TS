@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { redirect, useNavigate } from "react-router-dom";
-import { HOST } from "../../config/default";
+
+import { HOST } from "../../AppConfig/host";
 
 interface Response{
     statusCode : number;

@@ -15,6 +15,8 @@ dist-ssr
 *.local
 
 
+# this has firebase config and Host name
+AppConfig
 
 # Editor directories and files
 .vscode/*
